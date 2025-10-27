@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>입력양식용 태그들</h1>
+<form action="http://www.naver.com" autocomplete="off">
+    <input type="text" name="t"><br>
+    <input type="password" name="p" value="1234"><br>
+
+    <!-- 다중 선택 가능 -->
+    <input type="checkbox" name="c" value="1">ONE&nbsp;&nbsp;
+    <input type="checkbox" name="c" value="2">TWO&nbsp;&nbsp;
+    <input type="checkbox" name="c" value="3">THREE<br>
+
+    <!-- 다중 선택 불가 -->
+    <input type="radio" name="r" value="1">ONE&nbsp;&nbsp;
+    <input type="radio" name="r" value="2">TWO&nbsp;&nbsp;
+    <input type="radio" name="r" value="3">THREE<br>
+
+    <input type="hidden" name="h" value="hiddenValue">
+    <input type="file" name="f"><br>
+
+    <!-- html5에 추가된 속성들 -->
+    <input type="email" name="email" placeholder="이메일 입력"><br>
+    <input type="number" name="number" value="1" min="0" max="10"><br>
+    <input type="search" name="search"><br>
+    <input type="range" name="range" value="10"><br>
+
+    <input type="text" placeholder="한줄입력"><br>
+    <input type="text" required><br>
+
+
+    <label>
+        <select>
+            <option value="1">ONE</option>
+            <option value="2">TWO</option>
+            <option value="3">THREE</option>
+        </select>
+    </label><br>
+
+    <label>
+        <textarea name="ta" rows="5" cols="30">여려 줄을 입력할 수 있는 태그들입니다.</textarea>
+    </label>
+
+    <br>
+
+    <input type="button" value="button">
+    <input type="submit" value="submit">
+    <input type="reset" value="reset">
+
+
+</form>
+</body>
+</html>
