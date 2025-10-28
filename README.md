@@ -278,7 +278,7 @@ CSS Flexbox나 Grid를 사용한 현대적인 레이아웃 구성에서 `<div>`�
 
 ---
 
-# 블록 요소 vs 인라인 요소
+# 블록 요소 vs 인라인 요소 vs 인라인블록 요소
 
 ## 블록(Block) 요소
 
@@ -292,18 +292,97 @@ CSS Flexbox나 Grid를 사용한 현대적인 레이아웃 구성에서 `<div>`�
 - 같은 줄에 나란히 배치, 콘텐츠 크기만큼만 차지
 - width, height 조절 불가
 - margin, padding 좌우만 제대로 적용
-- 예: `<span>`, `<a>`, `<strong>`, `<img>`, `<input>`
+- 예: `<span>`, `<a>`, `<strong>`, `<em>`
+
+## 인라인블록(Inline-block) 요소
+
+- 같은 줄에 나란히 배치 (인라인처럼)
+- width, height 조절 가능 (블록처럼)
+- margin, padding 상하좌우 모두 적용
+- 예: `<img>`, `<input>`, `<button>`, `<select>`, `<textarea>`
 
 ## display 속성으로 변경 가능
-
 ```css
-display: block
+/* 블록으로 */
+display: block;
 
-; /* 블록으로 */
-display: inline
+/* 인라인으로 */
+display: inline;
 
-; /* 인라인으로 */
-display: inline-block
+/* 인라인블록으로 */
+display: inline-block;
+```  
 
-; /* 인라인처럼 배치 + 크기 조절 가능 */
+--- 
+
+# CSS 우선순위 (Cascading)
+
+## Cascading이란?
+**Cascading**은 "폭포수처럼 떨어지는" 의미로, 여러 스타일 규칙이 충돌할 때 어떤 것을 적용할지 결정하는 우선순위 체계
+
+CSS = **Cascading** Style Sheets
+
+## 우선순위 순서 (높음 → 낮음)
+
+### 1. !important (최우선)
+```css
+p { color: red !important; }
+```
+
+### 2. 인라인 스타일
+```html
+<p style="color: blue;">텍스트</p>
+```
+
+### 3. ID 선택자 (#)
+```css
+#title { color: green; }
+```
+
+### 4. 클래스, 속성, 가상 클래스 선택자 (.)
+```css
+.text { color: yellow; }
+[type="text"] { color: yellow; }
+:hover { color: yellow; }
+```
+
+### 5. 요소(태그) 선택자
+```css
+p { color: black; }
+```
+
+### 6. 전체 선택자 (*)
+```css
+* { color: gray; }
+```
+
+## 우선순위 예시
+```html
+<p id="myText" class="highlight" style="color: blue;">
+    무슨 색일까요?
+</p>
+```
+```css
+* { color: gray; }            /* 우선순위 6 */
+p { color: black; }           /* 우선순위 5 */
+.highlight { color: yellow; } /* 우선순위 4 */
+#myText { color: green; }     /* 우선순위 3 */
+/* 인라인: blue */             /* 우선순위 2 */
+```
+
+**결과**: 파란색 (인라인 스타일 적용)
+
+## 같은 우선순위일 때
+나중에 작성된 스타일이 적용됨 (Cascading!)
+```css
+p { color: red; }
+p { color: blue; } /* 이게 적용됨 */
+```
+
+## 우선순위 계산 (구체성)
+더 구체적인 선택자가 우선
+```css
+p { color: red; }              /* 구체성 낮음 */
+div p { color: blue; }         /* 구체성 중간 */
+div.container p { color: green; } /* 구체성 높음 - 적용됨 */
 ```
