@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Header */
+header {
+  background-color: white; /* 배경색을 흰색으로 설정 */
+
+  border-bottom: 2px solid #ddd; /* 아래쪽에 2px 두께의 회색(#ddd) 실선 테두리 */
+
+  padding: 15px 30px; /* 안쪽 여백: 상하 15px, 좌우 30px */
+
+  display: flex; /* Flexbox 레이아웃 사용 */
+
+  justify-content: space-between; /* 자식 요소들을 양 끝으로 배치
+                                     (로고는 왼쪽, 메뉴는 오른쪽) */
+
+  align-items: center; /* 자식 요소들을 세로 방향 중앙 정렬 */
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.top-menu {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.top-menu a {
+  text-decoration: none;
+  color: #333;
+}
+
+.top-menu a:hover {
+  color: #00704a;
+}
+
+/* Container */
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+  gap: 10px;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Content Section */
+.content {
+  background-color: #f9f3d2;
+  border: 2px solid #333;
+  padding: 40px;
+  min-height: 400px;
+}
+
+.content h2 h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.content p {
+  line-height: 1.8;
+  color: #555;
+}
+
+/* Right Sidebar (Ad) */
+.sidebar {
+  background-color: #a8d8ea;
+  width: 200px;
+  border: 2px solid #333;
+  padding: 20px;
+  min-height: 400px;
+}
+
+.sidebar h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.sidebar ul {
+  margin-left: 10px;
+}
+
+/* Footer */
+footer {
+  background-color: #c0c0c0;
+  border: 2px solid #333;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer p {
+  font-size: 12px;
+  color: #333;
+  line-height: 1.6;
+}
