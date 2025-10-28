@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Malgun Gothic', '맑은 고딕', Arial, sans-serif;
+    background-color: #f7f7f7;
+    padding: 40px 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #00704a;
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+/* 메인 테이블 */
+table {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+table tr {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+table tr:last-child {
+    border-bottom: none;
+}
+
+table td {
+    padding: 20px;
+    border: none;
+    vertical-align: top;
+}
+
+/* 이미지 셀 */
+table td:first-child {
+    background-color: #fafafa;
+    text-align: center;
+    vertical-align: middle;
+    width: 300px;
+}
+
+table td img {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    max-width: 100%;
+    height: auto;
+}
+
+/* 상품 정보 셀 */
+table td:nth-child(2) {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.8;
+}
+
+/* 상품번호 */
+table tr:nth-child(1) td:nth-child(2) {
+    font-weight: bold;
+    color: #666;
+    font-size: 14px;
+}
+
+/* 상세정보 */
+table tr:nth-child(2) td {
+    color: #555;
+    line-height: 1.8;
+}
+
+/* 상품명 */
+table tr:nth-child(3) td {
+    font-size: 20px;
+    font-weight: bold;
+    color: #00704a;
+}
+
+/* 상품가격 */
+table tr:nth-child(4) td {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00704a;
+}
+
+/* 영양 정보 타이틀 */
+table tr:nth-child(5) td {
+    background-color: #f9f9f9;
+}
+
+/* 영양 정보 테이블 */
+table table {
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+table table td {
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+table table div {
+    padding: 8px 0;
+    border-bottom: 1px dashed #e0e0e0;
+    color: #555;
+    font-size: 14px;
+}
+
+table table div:last-child {
+    border-bottom: none;
+}
+
+/* 버튼 영역 */
+button {
+    display: block;
+    margin: 30px auto;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+button a {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #00704a;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 112, 74, 0.3);
+}
+
+button a:hover {
+    background-color: #005a3c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 112, 74, 0.4);
+}
+
+button a:active {
+    transform: translateY(0);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    table td:first-child {
+        width: auto;
+    }
+
+    table td img {
+        width: 200px;
+    }
+
+    table tr:nth-child(3) td {
+        font-size: 18px;
+    }
+
+    table tr:nth-child(4) td {
+        font-size: 16px;
+    }
+
+    button a {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+}
