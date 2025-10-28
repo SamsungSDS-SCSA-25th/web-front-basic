@@ -265,7 +265,7 @@ CSS Flexbox나 Grid를 사용한 현대적인 레이아웃 구성에서 `<div>`�
 
 ## 참고사항
 
-HTML5부터는 다음과 같은 의미론적(semantic) 태그들도 많이 사용하는 추세입니다:
+> HTML5부터는 다음과 같은 의미론적(semantic) 태그들도 많이 사용하는 추세입니다:
 
 - `<header>`
 - `<nav>`
@@ -274,4 +274,36 @@ HTML5부터는 다음과 같은 의미론적(semantic) 태그들도 많이 사�
 - `<article>`
 - `<footer>`
 
-이런 태그들이 더 명확한 의미를 전달하지만, 특별한 의미가 필요 없는 경우엔 여전히 `<div>`가 유용합니다.
+> 이런 태그들이 더 명확한 의미를 전달하지만, 특별한 의미가 필요 없는 경우엔 여전히 `<div>`가 유용합니다.
+
+---
+
+# 블록 요소 vs 인라인 요소
+
+## 블록(Block) 요소
+
+- 새 줄에서 시작, 전체 너비 차지
+- width, height 조절 가능
+- margin, padding 상하좌우 모두 적용
+- 예: `<div>`, `<p>`, `<h1>`, `<ul>`, `<header>`
+
+## 인라인(Inline) 요소
+
+- 같은 줄에 나란히 배치, 콘텐츠 크기만큼만 차지
+- width, height 조절 불가
+- margin, padding 좌우만 제대로 적용
+- 예: `<span>`, `<a>`, `<strong>`, `<img>`, `<input>`
+
+## display 속성으로 변경 가능
+
+```css
+display: block
+
+; /* 블록으로 */
+display: inline
+
+; /* 인라인으로 */
+display: inline-block
+
+; /* 인라인처럼 배치 + 크기 조절 가능 */
+```
