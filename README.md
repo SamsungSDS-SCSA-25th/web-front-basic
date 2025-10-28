@@ -165,7 +165,7 @@ project/
 
 ---
 
-*상대경로는 웹 개발, 프로그래밍, 파일 시스템 관리에서 자주 사용되는 중요한 개념입니다.*
+_상대경로는 웹 개발, 프로그래밍, 파일 시스템 관리에서 자주 사용되는 중요한 개념입니다._
 
 ---
 
@@ -197,23 +197,22 @@ project/
 ## 예시
 
 ```html
-
 <header>
-    <h1>제목</h1>
-    <nav>
-        <a href="#home">홈</a>
-    </nav>
+  <h1>제목</h1>
+  <nav>
+    <a href="#home">홈</a>
+  </nav>
 </header>
 
 <main>
-    <article>
-        <h2>글 제목</h2>
-        <p>내용...</p>
-    </article>
+  <article>
+    <h2>글 제목</h2>
+    <p>내용...</p>
+  </article>
 </main>
 
 <footer>
-    <p>© 2025</p>
+  <p>© 2025</p>
 </footer>
 ```
 
@@ -244,10 +243,9 @@ project/
 예시:
 
 ```html
-
 <div class="card">
-    <h2>제목</h2>
-    <p>내용</p>
+  <h2>제목</h2>
+  <p>내용</p>
 </div>
 ```
 
@@ -302,6 +300,7 @@ CSS Flexbox나 Grid를 사용한 현대적인 레이아웃 구성에서 `<div>`�
 - 예: `<img>`, `<input>`, `<button>`, `<select>`, `<textarea>`
 
 ## display 속성으로 변경 가능
+
 ```css
 /* 블록으로 */
 display: block;
@@ -311,13 +310,14 @@ display: inline;
 
 /* 인라인블록으로 */
 display: inline-block;
-```  
+```
 
---- 
+---
 
 # CSS 우선순위 (Cascading)
 
 ## Cascading이란?
+
 **Cascading**은 "폭포수처럼 떨어지는" 의미로, 여러 스타일 규칙이 충돌할 때 어떤 것을 적용할지 결정하는 우선순위 체계
 
 CSS = **Cascading** Style Sheets
@@ -325,64 +325,296 @@ CSS = **Cascading** Style Sheets
 ## 우선순위 순서 (높음 → 낮음)
 
 ### 1. !important (최우선)
+
 ```css
-p { color: red !important; }
+p {
+  color: red !important;
+}
 ```
 
 ### 2. 인라인 스타일
+
 ```html
 <p style="color: blue;">텍스트</p>
 ```
 
 ### 3. ID 선택자 (#)
+
 ```css
-#title { color: green; }
+#title {
+  color: green;
+}
 ```
 
 ### 4. 클래스, 속성, 가상 클래스 선택자 (.)
+
 ```css
-.text { color: yellow; }
-[type="text"] { color: yellow; }
-:hover { color: yellow; }
+.text {
+  color: yellow;
+}
+[type="text"] {
+  color: yellow;
+}
+:hover {
+  color: yellow;
+}
 ```
 
 ### 5. 요소(태그) 선택자
+
 ```css
-p { color: black; }
+p {
+  color: black;
+}
 ```
 
-### 6. 전체 선택자 (*)
+### 6. 전체 선택자 (\*)
+
 ```css
-* { color: gray; }
+* {
+  color: gray;
+}
 ```
 
 ## 우선순위 예시
+
 ```html
-<p id="myText" class="highlight" style="color: blue;">
-    무슨 색일까요?
-</p>
+<p id="myText" class="highlight" style="color: blue;">무슨 색일까요?</p>
 ```
+
 ```css
-* { color: gray; }            /* 우선순위 6 */
-p { color: black; }           /* 우선순위 5 */
-.highlight { color: yellow; } /* 우선순위 4 */
-#myText { color: green; }     /* 우선순위 3 */
-/* 인라인: blue */             /* 우선순위 2 */
+* {
+  color: gray;
+} /* 우선순위 6 */
+p {
+  color: black;
+} /* 우선순위 5 */
+.highlight {
+  color: yellow;
+} /* 우선순위 4 */
+#myText {
+  color: green;
+} /* 우선순위 3 */
+/* 인라인: blue */ /* 우선순위 2 */
 ```
 
 **결과**: 파란색 (인라인 스타일 적용)
 
 ## 같은 우선순위일 때
+
 나중에 작성된 스타일이 적용됨 (Cascading!)
+
 ```css
-p { color: red; }
-p { color: blue; } /* 이게 적용됨 */
+p {
+  color: red;
+}
+p {
+  color: blue;
+} /* 이게 적용됨 */
 ```
 
 ## 우선순위 계산 (구체성)
+
 더 구체적인 선택자가 우선
+
 ```css
-p { color: red; }              /* 구체성 낮음 */
-div p { color: blue; }         /* 구체성 중간 */
-div.container p { color: green; } /* 구체성 높음 - 적용됨 */
+p {
+  color: red;
+} /* 구체성 낮음 */
+div p {
+  color: blue;
+} /* 구체성 중간 */
+div.container p {
+  color: green;
+} /* 구체성 높음 - 적용됨 */
+```
+
+# CSS 핵심 헷갈리는 개념
+
+## 1. Box Model - 실제 크기 계산
+
+### 문제
+200px 박스 2개가 400px 컨테이너에 안 들어감!
+
+```css
+.box {
+    width: 200px;
+    padding: 20px;
+    border: 5px solid black;
+}
+/* 실제 크기: 200 + 40(padding) + 10(border) = 250px */
+```
+
+### 해결
+```css
+* {
+    box-sizing: border-box; /* padding, border 포함해서 200px */
+}
+```
+
+## 2. margin vs padding
+
+### margin - 외부 여백
+- 배경색 적용 안 됨
+- 다른 요소와의 간격
+
+### padding - 내부 여백
+- 배경색 적용됨
+- 요소 내부 공간
+
+```css
+.button {
+    padding: 20px;  /* 버튼이 커짐, 배경색 적용 */
+    margin: 20px;   /* 다른 요소와 간격 */
+}
+```
+
+## 3. display: none vs visibility: hidden
+
+```css
+display: none;       /* 완전히 사라짐, 공간도 없음 */
+visibility: hidden;  /* 안 보이지만 공간은 차지 */
+```
+
+## 4. position 기준점
+
+### 가장 많이 쓰는 패턴
+```css
+.parent {
+    position: relative; /* 기준점 */
+}
+
+.child {
+    position: absolute; /* parent 기준으로 이동 */
+    top: 10px;
+    right: 10px;
+}
+```
+
+- `relative`: 자기 원래 위치 기준
+- `absolute`: position 있는 부모 기준
+- `fixed`: 화면(viewport) 기준
+
+## 5. width: 100% vs auto
+
+```css
+/* 문제: padding 더하면 넘침 */
+.box {
+    width: 100%;
+    padding: 50px; /* 넘침 발생! */
+}
+
+/* 해결 1 */
+.box {
+    width: auto;   /* 자동으로 맞춤 */
+    padding: 50px;
+}
+
+/* 해결 2 */
+.box {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 50px;
+}
+```
+
+## 6. inline 요소의 margin/padding
+
+### 문제
+```css
+span {
+    margin-top: 30px;  /* ❌ 안 먹힘 */
+    padding-top: 30px; /* ❌ 제대로 안 먹힘 */
+}
+```
+
+### 해결
+```css
+span {
+    display: inline-block; /* 이제 상하 여백 적용됨 */
+    margin: 30px;
+    padding: 30px;
+}
+```
+
+## 7. z-index가 안 먹힐 때
+
+### 문제
+```css
+.modal {
+    z-index: 9999; /* ❌ position 없으면 안 먹힘 */
+}
+```
+
+### 해결
+```css
+.modal {
+    position: fixed;  /* position 필수! */
+    z-index: 9999;
+}
+```
+
+## 8. 가운데 정렬
+
+### 인라인 요소 (이미지, 텍스트)
+```css
+.parent {
+    text-align: center; /* 부모에 적용 */
+}
+```
+
+### 블록 요소
+```css
+.child {
+    width: 300px;      /* width 필수 */
+    margin: 0 auto;    /* 자식에 적용 */
+}
+```
+
+### Flexbox (가장 쉬움)
+```css
+.parent {
+    display: flex;
+    justify-content: center;  /* 가로 */
+    align-items: center;      /* 세로 */
+}
+```
+
+## 9. margin 겹침
+
+```css
+.box1 { margin-bottom: 30px; }
+.box2 { margin-top: 20px; }
+/* 간격: 50px 아님! 30px (큰 값으로 합쳐짐) */
+```
+
+### 해결
+```css
+/* 한쪽에만 margin 주기 */
+.box1 { margin-bottom: 50px; }
+.box2 { margin-top: 0; }
+```
+
+## 10. float 후 부모 높이 사라짐
+
+### 문제
+```css
+.child { float: left; }
+/* 부모 높이가 0이 됨 */
+```
+
+### 해결 (clearfix)
+```css
+.parent::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+```
+
+### 현대적 해결: Flexbox 사용
+```css
+.parent {
+    display: flex; /* float 대신 */
+}
 ```
