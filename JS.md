@@ -1147,3 +1147,279 @@ console.log(subtract(10, 3));
 - [Codewars](https://www.codewars.com/)
 
 Happy Coding! 🚀
+
+---
+
+# JavaScript 배열 메서드 정리
+
+JavaScript의 주요 배열 메서드들을 예시와 함께 설명합니다.
+
+## 1. forEach()
+
+**배열의 각 요소에 대해 주어진 함수를 실행합니다. 반환값이 없습니다.**
+
+### 형태
+```javascript
+배열.forEach((요소, 인덱스, 배열) => { })
+```
+
+- **요소**: 배열의 각 항목
+- **인덱스**: 현재 위치 (생략 가능)
+- **배열**: 원본 배열 (생략 가능)
+- **반환값**: 없음 (undefined)
+
+### 예시
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+// 각 요소를 출력
+numbers.forEach((num) => {
+  console.log(num * 2);
+});
+// 출력: 2, 4, 6, 8, 10
+
+// 인덱스와 배열도 사용 가능
+const fruits = ['사과', '바나나', '오렌지'];
+fruits.forEach((fruit, index) => {
+  console.log(`${index}: ${fruit}`);
+});
+// 출력: 0: 사과, 1: 바나나, 2: 오렌지
+```
+
+## 2. map()
+
+**배열의 각 요소를 변환하여 새로운 배열을 반환합니다.**
+
+### 형태
+```javascript
+const 새배열 = 배열.map((요소, 인덱스, 배열) => { return 변환된값 })
+```
+
+- **요소**: 배열의 각 항목
+- **인덱스**: 현재 위치 (생략 가능)
+- **배열**: 원본 배열 (생략 가능)
+- **반환값**: 변환된 값들로 이루어진 새로운 배열
+
+### 예시
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+// 각 요소를 2배로
+const doubled = numbers.map((num) => num * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
+
+// 객체 배열 변환
+const users = [
+  { name: '김철수', age: 25 },
+  { name: '이영희', age: 30 }
+];
+
+const names = users.map((user) => user.name);
+console.log(names); // ['김철수', '이영희']
+
+// 복잡한 변환
+const userInfo = users.map((user) => ({
+  ...user,
+  isAdult: user.age >= 20
+}));
+console.log(userInfo);
+// [{ name: '김철수', age: 25, isAdult: true }, ...]
+```
+
+## 3. filter()
+
+**조건을 만족하는 요소들만 모아 새로운 배열을 반환합니다.**
+
+### 형태
+```javascript
+const 새배열 = 배열.filter((요소, 인덱스, 배열) => { return 조건 })
+```
+
+- **요소**: 배열의 각 항목
+- **인덱스**: 현재 위치 (생략 가능)
+- **배열**: 원본 배열 (생략 가능)
+- **반환값**: 조건이 true인 요소들만 모은 새로운 배열
+
+### 예시
+
+```javascript
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// 짝수만 필터링
+const evenNumbers = numbers.filter((num) => num % 2 === 0);
+console.log(evenNumbers); // [2, 4, 6, 8, 10]
+
+// 객체 배열 필터링
+const products = [
+  { name: '노트북', price: 1000000 },
+  { name: '마우스', price: 30000 },
+  { name: '키보드', price: 80000 }
+];
+
+const expensive = products.filter((product) => product.price >= 50000);
+console.log(expensive);
+// [{ name: '노트북', price: 1000000 }, { name: '키보드', price: 80000 }]
+
+// 여러 조건
+const users = [
+  { name: '김철수', age: 25, active: true },
+  { name: '이영희', age: 17, active: true },
+  { name: '박민수', age: 30, active: false }
+];
+
+const activeAdults = users.filter((user) => user.age >= 18 && user.active);
+console.log(activeAdults); // [{ name: '김철수', age: 25, active: true }]
+```
+
+## 4. find()
+
+**조건을 만족하는 첫 번째 요소를 반환합니다. 없으면 undefined를 반환합니다.**
+
+### 형태
+```javascript
+const 찾은요소 = 배열.find((요소, 인덱스, 배열) => { return 조건 })
+```
+
+- **요소**: 배열의 각 항목
+- **인덱스**: 현재 위치 (생략 가능)
+- **배열**: 원본 배열 (생략 가능)
+- **반환값**: 조건을 만족하는 첫 번째 요소 (없으면 undefined)
+
+### 예시
+
+```javascript
+const numbers = [5, 12, 8, 130, 44];
+
+// 10보다 큰 첫 번째 수
+const found = numbers.find((num) => num > 10);
+console.log(found); // 12
+
+// 객체 배열에서 찾기
+const users = [
+  { id: 1, name: '김철수' },
+  { id: 2, name: '이영희' },
+  { id: 3, name: '박민수' }
+];
+
+const user = users.find((user) => user.id === 2);
+console.log(user); // { id: 2, name: '이영희' }
+
+// 찾지 못한 경우
+const notFound = users.find((user) => user.id === 10);
+console.log(notFound); // undefined
+
+// findIndex()와 비교
+const index = users.findIndex((user) => user.id === 2);
+console.log(index); // 1 (인덱스 반환)
+```
+
+## 5. reduce()
+
+**배열의 각 요소에 대해 리듀서 함수를 실행하여 하나의 결과값을 반환합니다.**
+
+### 형태
+```javascript
+const 결과 = 배열.reduce((누적값, 요소, 인덱스, 배열) => { return 새누적값 }, 초기값)
+```
+
+- **누적값**: 이전까지 계산된 값
+- **요소**: 배열의 각 항목
+- **인덱스**: 현재 위치 (생략 가능)
+- **배열**: 원본 배열 (생략 가능)
+- **초기값**: 시작할 값 (생략 가능, 생략 시 배열의 첫 요소)
+- **반환값**: 모든 요소를 순회하며 누적한 최종 결과값
+
+### 예시
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+// 합계 구하기
+const sum = numbers.reduce((accumulator, current) => {
+    return accumulator + current;
+}, 0); // 0은 초기값
+console.log(sum); // 15
+
+// 곱하기
+const product = numbers.reduce((acc, cur) => acc * cur, 1);
+console.log(product); // 120
+
+// 최댓값 찾기
+const max = numbers.reduce((acc, cur) => {
+    return cur > acc ? cur : acc;
+});
+console.log(max); // 5
+
+// 객체로 변환
+const fruits = ['사과', '바나나', '사과', '오렌지', '바나나', '사과'];
+const count = fruits.reduce((acc, fruit) => {
+    acc[fruit] = (acc[fruit] || 0) + 1;
+    return acc;
+}, {});
+console.log(count); // { 사과: 3, 바나나: 2, 오렌지: 1 }
+
+// 배열 평탄화
+const nested = [[1, 2], [3, 4], [5, 6]];
+const flattened = nested.reduce((acc, cur) => acc.concat(cur), []);
+console.log(flattened); // [1, 2, 3, 4, 5, 6]
+
+// 복잡한 데이터 가공
+const orders = [
+    { product: '노트북', quantity: 1, price: 1000000 },
+    { product: '마우스', quantity: 2, price: 30000 },
+    { product: '키보드', quantity: 1, price: 80000 }
+];
+
+const total = orders.reduce((acc, order) => {
+    return acc + (order.quantity * order.price);
+}, 0);
+console.log(total); // 1,140,000
+```
+
+## 메서드 조합 사용 예시
+
+```javascript
+const students = [
+    { name: '김철수', score: 85, class: 'A' },
+    { name: '이영희', score: 92, class: 'B' },
+    { name: '박민수', score: 78, class: 'A' },
+    { name: '최지영', score: 95, class: 'B' }
+];
+
+// A반 학생들의 평균 점수
+const classAAverage = students
+    .filter((student) => student.class === 'A')
+    .map((student) => student.score)
+    .reduce((acc, score, _, arr) => acc + score / arr.length, 0);
+
+console.log(classAAverage); // 81.5
+
+// 80점 이상 학생 이름 목록
+const highScorers = students
+    .filter((student) => student.score >= 80)
+    .map((student) => student.name);
+
+console.log(highScorers); // ['김철수', '이영희', '최지영']
+```
+
+## 주요 차이점 정리
+
+| 메서드 | 반환값 | 원본 배열 변경 | 주요 용도 |
+|--------|--------|---------------|-----------|
+| forEach | undefined | ❌ | 각 요소에 작업 수행 |
+| map | 새 배열 | ❌ | 요소 변환 |
+| filter | 새 배열 | ❌ | 조건에 맞는 요소 선택 |
+| find | 단일 요소 | ❌ | 조건에 맞는 첫 요소 찾기 |
+| reduce | 단일 값 | ❌ | 배열을 하나의 값으로 축약 |
+
+## 핵심 포인트
+
+- **forEach**: 반환값이 없으므로 단순 반복 작업에 사용
+- **map**: 변환된 새 배열이 필요할 때 사용
+- **filter**: 조건에 맞는 항목만 추출할 때 사용
+- **find**: 특정 항목 하나만 찾을 때 사용
+- **reduce**: 배열을 단일 값으로 집계할 때 사용
+
+이 메서드들은 모두 함수형 프로그래밍 스타일을 지원하며, 체이닝을 통해 조합하여 사용할 수 있습니다!
